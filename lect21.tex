@@ -1,0 +1,81 @@
+\subsubsection{Examples of inertia tensor calculation}
+\paragraph{}
+A square with two masses $m$ in opposite vertices (second and forth quarter) and $2m$ in two others, with $z=0$.
+$$I_{xx} = \sum_i m_i(y^2_i+z^2_i) = \sum_i m_i y_i^2 = 6ma^2$$
+$$I_{yy} = \sum_i m_i(x^2_i+z^2_i) = \sum_i m_i x_i^2 = 6ma^2$$
+$$I_{zz} = \sum_i m_i(x^2_i+y^2_i) =  12ma^2$$
+Now the mixed terms
+$$I_{yx} = I_{xy} = \sum_i -m_ix_iy_i = -2ma^2 -2ma^2 + ma^2 + ma^2 = -2ma^2$$
+$$I_{xz} = I_{yz} = I_{zx} = I_{zy} = 0$$
+Thus
+$$I = \begin{pmatrix}
+6ma^2&-2ma^2&0\\
+-2ma^2&6ma^2&0\\
+0&0&12ma^2
+\end{pmatrix}$$
+\paragraph{}
+Now the same system with axis rotated by $\frac{\pi}{4}$:
+$$I_{xx} = \sum_i m_i(y^2_i+z^2_i) = \sum_i m_i y_i^2 = 8ma^2$$
+$$I_{yy} = \sum_i m_i(x^2_i+z^2_i) = \sum_i m_i x_i^2 = 4ma^2$$
+$$I_{zz} = \sum_i m_i(x^2_i+y^2_i) =  12ma^2$$
+
+Now the mixed terms
+$$I_{yx} = I_{xy} = I_{xz} = I_{yz} = I_{zx} = I_{zy} = 0$$
+Thus
+$$I = \begin{pmatrix}
+8ma^2&0&0\\
+0&4ma^2&0\\
+0&0&12ma^2
+\end{pmatrix}$$
+\paragraph{Principal axes of inertia}
+Since tensor of inertia is symmetrical, it's diagonalizable by orthogonal matrix, thus we can find such axex that $I$ is diagonal in it. We call it principal axes of inertia. 
+
+If a body has a symmetry axis, it has to be on of principal axes.
+\paragraph{Continuous case}
+A uniform box of size $2a\times 2b \times 2c$ with axes of symmetry. 
+\begin{align*}
+I_{xx} = \iiint \rho (y^2+z^2) dxdydz = \rho \int_{-a}^{a} dx \int_{-b}^b\int_{-c}^c y^2 + z^2 dz dy = 2\rho a  \int_{-b}^b\int \left[y^2z + \frac{z^3}{3}\right]_{-c}^c   dy =\\= 2\rho a  \int_{-b}^b\int \left[y^2z + \frac{z^3}{3}\right]_{-c}^c   dy = 4\rho a \left(c+\frac{c^3}{3}\right)\int_{-b}^b y^2  dy = 8abc\rho \left(\frac{b^3}{3}+\frac{c^3}{3}\right) = M\left(\frac{b^3}{3}+\frac{c^3}{3}\right)
+\end{align*}
+Similarly for $I_{yy}$ and $I_{zz}$.
+
+$$I_{xy} = \iint \rho xy dxdydz = 0$$
+Can be seen from symmetry, thus
+
+$$I = \begin{pmatrix}
+\frac{b^3}{3}+\frac{c^3}{3}&0&0\\
+0&\frac{a^3}{3}+\frac{c^3}{3}&0\\
+0&0&\frac{a^3}{3}+\frac{b^3}{3}
+\end{pmatrix}M$$
+\paragraph{Principal axes of inertia}
+$$\vec{\Omega} = (\Omega_1, \Omega_2, \Omega_3)$$
+Since
+$$T  = T_{cm} + \frac{1}{2} \Omega I \Omega = T_{cm} + \frac{1}{2 } \left( I_1\Omega_1^2+ I_2\Omega_2^2+ I_3\Omega_3^2 \right)$$
+
+\paragraph{Translation of axis}
+$$\vec{r} = \vec{r}' + \vec{a}$$
+Where $r'$ is in center of mass system.
+\begin{align*}
+I_{ik} = \int \rho \left({r'}^2 \delta_{ik} -r_i'r_k' \right) d\vec{r}' = \int \rho \left({\left(r'-a\right)}^2 \delta_{ik} -(r_i'-a_i)(r_k'-a_k) \right) d\vec{r}' =\\= I_{ik}' + \int \rho \left(\left(-2r'a + a^2\right) \delta_{ik} -(-a_ir_i'-a_kr_k'+a_ia_k) \right) d\vec{r}' =\\= I_{ik}' + \int \rho \left( a^2 \delta_{ik} - a_ia_k \right) d\vec{r}' = I_{ik}' + M \left( a^2 \delta_{ik} - a_ia_k \right) 
+\end{align*}
+
+\subsection{Angular momentum of rigid body}
+Denote angular momentum around center of mass as $\vec{M}$.
+$$\vec{M} = \sum m_i \vec{r}_i \times \vec{v}_i = \int \rho(\vec{r}) \left( \vec{r} \times \vec{v} \right) d\vec{r}$$
+From $\vec{v} = \vec{V} + \vec{\Omega} \times \vec{r}$:
+$$\vec{M} = \int \rho(\vec{r}) \left( \vec{r} \times \vec{v} \right) dxdydz = \int \rho(\vec{r}) \left( \vec{r} \times \left(\vec{V} + \vec{\Omega} \times \vec{r}\right) \right) dxdydz  = \int \rho(\vec{r}) \left( \vec{r} \times \vec{V} + \vec{r} \times \vec{\Omega} \times \vec{r}\right) dxdydz $$
+From $\vec{a} \times (\vec{b} \times \vec{c}) = \vec{b}(ac) - \vec{c}(ab)$:
+\begin{align*}
+\vec{M} = \underbrace{\int \rho(\vec{r})  \vec{r} \times \vec{V} dxdydz}_{0} +\int \rho(\vec{r})\left(\vec{\Omega} r^2 + \vec{r} \left(\vec{\Omega} \cdot \vec{r}\right)\right) dxdydz =\\= \int \rho(\vec{r})\left(\vec{\Omega} r^2 + \vec{r} \left(\vec{\Omega} \cdot \vec{r}\right)\right) dxdydz =  \int \rho(\vec{r})\left(\vec{\Omega} r^2 + \vec{r} \left(\vec{\Omega} \cdot \vec{r}\right)\right) dxdydz
+\end{align*}
+$$M_i =\int \rho(\vec{r})\left(\vec{\Omega}_i r^2 + \vec{r}_j \left(\vec{\Omega}_i \cdot \vec{r}_i\right)\right) dxdydz = \int \rho(\vec{r})\left(\vec{\Omega}_j \delta_{ij} r^2 + \vec{r}_i \left(\vec{\Omega}_j \cdot \vec{r}_j\right)\right) dxdydz = I_{ij} \Omega_j $$
+That means
+$$\vec{M} = I\vec{\Omega}$$
+\paragraph{Note} $$\vec{M} \not\parallel \vec{\Omega}$$
+\paragraph{Symmetrical }
+Lagrangian is
+$$\mathcal{L}  = \frac{1}{2} MV^2 + \frac{1}{2} I_{ik} \Omega_i \Omega_k$$
+$$\dot{\vec{M}} = \frac{d}{dt} \left( \sum m_i \vec{r}_i \times v_i \right) = \sum m_i \vec{v}_i \times \vec{v}_i + \sum \vec{r}_i \times m\dot{\vec{v}}_i = \sum \vec{r}_i \times \dot{\vec{p}}_i = \sum \vec{r}_i \times \vec{f}_i = \vec{N} $$
+
+\paragraph{}
+Suppose $\hat{z}$ is axis of symmetry, then we can choose $\hat{x}$ and $\hat{y}$ such that $M_y=0$ and thus $\Omega_y = 0$. For point $\vec{r} = (0,0,r)$:
+$$\vec{v} = \vec{V} + \vec{\Omega} \times \vec{r} = \vec{\Omega} \times \vec{r}  = (0, -\Omega_1 r, 0)$$

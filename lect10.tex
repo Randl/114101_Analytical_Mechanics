@@ -1,0 +1,55 @@
+\subsection{Switch to normal coordinates}
+Normal coordinates are coordinates in which $T$ and $V$ are diagonal.
+Since
+$$V\vec{a}_k = \lambda_k T \vec{a}_k$$
+$$\vec{a}_l^TV = \lambda_l \vec{a}_l^T T $$
+$$(\lambda_k - \lambda_l) \vec{a}_l^T T \vec{a}_k = \vec{a}_l^TV\vec{a}_k -\vec{a}_l^TV\vec{a}_k = 0 $$
+
+Suppose that all eigenvalues are different, then
+$$\vec{a}_l^T T \vec{a}_k = 0$$
+If we take matrix $A  =\begin{pmatrix} \vec{a}_1, \vec{a}_2, \dots, \vec{a}_n \end{pmatrix}$
+then 
+$$A^TTA=I$$
+Now lets show that
+$$A^TVA=\lambda$$
+where $\lambda$ is matrix with eigenvalues on diagonal.
+
+Now, since $V\vec{a}_k = T \vec{a}_k\lambda_k $,
+$$VA  =TA\lambda$$
+$$A^TVA  =A^TTA\lambda  =I\lambda = \lambda$$
+
+Define normal coordinates
+$$\vec{\eta} = A\vec{\xi}$$
+
+Then
+$$V = \frac{1}{2} \eta^T V \eta = \frac{1}{2} \xi^T A^T V A \xi = \frac{1}{2} \xi^T \lambda \xi$$
+$$T = \frac{1}{2} \eta^T T \eta = \frac{1}{2} \xi^T A^T T A \xi = \frac{1}{2} \xi^T \xi$$
+
+Now we have non-coupled equations:
+$$L = \frac{1}{2} \sum_K \left(  \dot{\xi}_k^2 - \omega^2_k \xi^2_k \right)$$
+, thus
+$$\ddot{\xi}_k+ \omega_k^2 \xi_k = 0$$
+with solution
+$$\xi_k = c_k e^{-i\omega_k t}$$
+$$\xi = \begin{pmatrix}c_1 e^{-i\omega_1 t}\\c_2 e^{-i\omega_2 t}\\\vdots \\ c_n e^{-i\omega_n t}\\\end{pmatrix}$$
+
+\paragraph{Back to example of coupled oscillator}
+Normalizing eigenvalues by $\frac{1}{\sqrt{2m}}$
+$$A = \frac{1}{\sqrt{2m}} \begin{pmatrix} 1&1\\-1&1\end{pmatrix}$$
+and
+$$\begin{pmatrix}
+x_1\\x_2
+\end{pmatrix} = A \begin{pmatrix} \xi_1\\\xi_2 \end{pmatrix}$$
+Then
+$$A^T T A = \frac{1}{\sqrt{2m}} \begin{pmatrix} 1&-1\\1&1\end{pmatrix} \begin{pmatrix}m&0\\0&m\end{pmatrix} \frac{1}{\sqrt{2m}}\begin{pmatrix} 1&1\\-1&1\end{pmatrix} = \frac{1}{2m} \begin{pmatrix}2m&0\\0&2m\end{pmatrix}  = I$$
+$$A^TVA =  \begin{pmatrix}\frac{3k}{m}&0\\0&\frac{k}{m}\end{pmatrix} =  \begin{pmatrix}\omega_1^2&0\\0&\omega_2^2\end{pmatrix}$$
+The Lagrangian is
+$$L = \frac{1}{2} \left( \dot{\xi}^2_k - \omega^2_k \xi^2_k \right)$$
+$$\xi(t) = \begin{pmatrix} c_1e^{-i\omega_1 t} \\c_2e^{-i\omega_2 t} \end{pmatrix}$$
+For initial conditons $\vec{x}(t) = \begin{pmatrix}\delta x \\ 0\end{pmatrix}$ and $\dot{\vec{x}}(t) = \begin{pmatrix}0 \\ 0\end{pmatrix}$.
+
+In normal coordinates
+$\dot{\vec{\xi}} = \begin{pmatrix}\frac{\lambda x}{2} \sqrt{2m} \\\frac{\lambda x}{2} \sqrt{2m}\end{pmatrix}$ and  $\dot{\vec{\xi}}(t) = \begin{pmatrix}0 \\ 0\end{pmatrix}$.
+
+Then $c_1=c_2$ and $c_1+c_2 = \delta x$.
+$$c_1=c_2 = \frac{\delta x}{2}$$

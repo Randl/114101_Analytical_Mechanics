@@ -1,0 +1,84 @@
+Take a look at transformation 
+$$\begin{cases}
+q_i \to Q_i = q_i + \alpha F_i(q,p)\\
+p_i \to P_i = p_i + \alpha E_i(q,p)\\
+\end{cases}$$
+For one degree of freedom: $\left\{ Q,Q \right\}$ and $\left\{ P,P \right\}$ are 0. Also
+$$\left\{Q,P \right\} = \left\{ q_i + \alpha F_i(q,p),p_i + \alpha E_i(q,p) \right\} = \left\{ q,p \right\} + \alpha \left\{ F(q,p), p \right\}  + \alpha \left\{ q, E(q,p) \right\} + o(\alpha^2) = 1 + \alpha \left( \frac{\partial F}{\partial q}+\frac{\partial E}{\partial p} \right)$$
+For transformation to be canonical, we require $\frac{\partial F}{\partial q} = -\frac{\partial E}{\partial p} $.
+
+For more degrees of freedom, we want
+$\frac{\partial F_j}{\partial q_i} = -\frac{\partial E_i}{\partial p_j} $.
+
+If we define function $G(q,p)$, and $F = \frac{\partial G}{\partial q_i}$ and $E=-\frac{\partial G}{\partial p_i}$. Those functions would fulfill requirements of canonical transformations.
+
+\paragraph{Example}
+$G = p_j$, i.e.
+$F_i = \delta_{ij}$ and $E = 0$. Then
+$$\begin{cases}
+q_i \to Q_i = q_i + \alpha \delta_{ij}\\
+p_i \to P_i = p_i\\
+\end{cases}$$
+That means momentum is generating function of translation.
+\paragraph{Example}
+$G = J_z = xp_y - yp_x$, i.e.
+$$\begin{cases}
+\frac{\partial G}{\partial p_x} = -y\\
+\frac{\partial G}{\partial p_y} = x\\
+\frac{\partial G}{\partial p_z} = 0\\
+\end{cases}$$ and 
+$$\begin{cases}
+\frac{\partial G}{\partial x} = p_y\\
+\frac{\partial G}{\partial y} = -p_x\\
+\frac{\partial G}{\partial z} = 0\\
+\end{cases}$$. Then
+$$\begin{cases}
+(x,y,z)\to (x+\alpha y, y- \alpha x, z)\\
+(p_x, p_y, p_z)\to (p_x-\alpha p_y, p_y+ \alpha p_x, p_z)\\
+\end{cases}$$
+
+Take a look at rotational matrix:
+$$R = \begin{pmatrix}
+\cos \alpha & -\sin \alpha&0\\
+\sin \alpha & \cos \alpha&0\\
+0&0&1
+\end{pmatrix} \approx \begin{pmatrix}
+1 & - \alpha&0\\
+ \alpha &1&0\\
+0&0&1
+\end{pmatrix}$$
+Which is exactly our transformation, i.e. angular momentum is generating function of rotation.
+\paragraph{Example}
+$G=H$, then $\frac{\partial G}{\partial p_i} = \dot{q}_i$ and $\frac{\partial G}{\partial q_i} = -\dot{p}_i$ , then
+$$\begin{cases}
+q_i \to Q_i = q_i + dt \dot{q}_i = q(t+dt)\\
+p_i \to P_i = p_i + dt \dot{p}_i = p(t+dt)\\
+\end{cases}$$
+
+\subsection{Noether's theorem}
+Suppose $G(q,p)$ is conserved value. Then 
+$$0 = \frac{dG}{dt} = \left\{ G,H \right\} + \underbrace{\frac{\partial G}{\partial t}}_{0}$$
+i.e $0 = \left\{ G,H \right\}$.
+$$\delta H  = \frac{\partial H}{\partial q_i} \delta q_i+\frac{\partial H}{\partial p_i} \delta p_i = \frac{\partial H}{\partial q_i} \alpha\frac{\partial G}{\partial p_i}  -\frac{\partial H}{\partial p_i} \alpha\frac{\partial G}{\partial q_i} = \alpha \left\{ H,G \right\} = 0 $$
+\subsection{Liouville's theorem}
+Volume is conserved in phase space. We've shown that $G=H$ is generation function of time shift and it is canonical transformation. Now we'll show that any canonical transformation conserves in phase space.
+
+We know that
+$$D_{\vec{\eta}} \eta^\prime J D_{\vec{\eta}}^T \eta^\prime = J$$
+Since $|J|=1$,
+$$\left|D_{\vec{\eta}} \eta^\prime J D_{\vec{\eta}}^T \eta^\prime\right| = 1$$
+Since $|A|=\left|A^T\right|$, 
+$$\left|D_{\vec{\eta}}\right|^2 = 1 \Rightarrow \left|D_{\vec{\eta}}\right| = \pm1  $$
+
+Than means that determinant of transformation between $\eta$ and $\eta^\prime$ is 1, i.e. volume is conserved
+\subsection{Creating transforamtions}
+Lets show that there is a simple way to create canonical transformations. Given $F(q,Q)$ define
+$$p_i = \frac{\partial F}{\partial q_i} \Rightarrow p_i(q,Q) \to Q_i(q,p)$$
+$$P_i = -\frac{\partial F}{\partial Q_i} \Rightarrow P_i(q,Q(q,p))$$
+We want to show that transformation is canonical:
+$$\left\{ Q,P \right\}_{q,p} = \frac{\partial Q}{\partial q}_{p=\text{const}}\frac{\partial P}{\partial p}_{q=\text{const}} - \frac{\partial P}{\partial q}_{p=\text{const}}\frac{\partial Q}{\partial p}_{q=\text{const}} $$
+$$\frac{\partial P}{\partial p} = \frac{\partial P}{\partial Q}\frac{\partial Q}{\partial p}$$
+$$\frac{\partial P}{\partial q} = \frac{\partial P}{\partial q}+\frac{\partial P}{\partial Q}\frac{\partial Q}{\partial q}$$
+$$\left\{ Q,P \right\}_{q,p} = \frac{\partial Q}{\partial q}_{p=\text{const}}\frac{\partial P}{\partial Q}\frac{\partial Q}{\partial p} -  \left(\frac{\partial P}{\partial q}+\frac{\partial P}{\partial Q}\frac{\partial Q}{\partial q}\right)\frac{\partial Q}{\partial p}_{q=\text{const}} = - \frac{\partial P}{\partial q}\frac{\partial Q}{\partial p}_{q=\text{const}} = - \frac{\partial^2 F}{\partial qQ}\frac{\partial Q}{\partial p} = \frac{\partial Q}{\partial p}\frac{\partial p}{\partial Q}=1$$
+\paragraph{Definition} $F$ is generating function of type 1.
+\paragraph{Generally} we can choose $2n$ independent coordinates on of $4n$ we have $q,Q,p,P$. 

@@ -1,0 +1,97 @@
+\section{Hamiltonian formalism}
+In Hamiltonian formalism we want to describe system with positions and momenta. Momentum connected with coordinate $q_i$ is
+$$p_i(q,\dot{q},t) = \frac{\partial L}{\partial \dot{q}}$$
+We want to find inverse transformation $\dot{q}(q,p,t)$. It's possible iff $$0 = \left| \frac{\partial p_1}{\partial \dot{q}_j} \right| = \left| \frac{\partial^2 L}{\partial \dot{q}_i \dot{q}_j} \right|$$
+
+Define Hamiltonian
+$$H(\vec{q}, \vec{p}, t) = \sum_i p_i\dot{q}_i(\vec{q}, \vec{p}, t) - L \big(q, \dot{q}_i(\vec{q}, \vec{p}, t) , t \big)$$
+
+\paragraph{Examples}
+\subparagraph{Free particle}
+$$L = \frac{m \dot{q}^2}{2}$$
+$$p = m\dot{q} \Rightarrow  \dot{q} =  \frac{p}{m}$$
+$$H = \frac{p^2}{2m}$$
+\subparagraph{Harmonic oscillator}
+$$L = \frac{m\dot{q}^2}{2} - \frac{kq^2}{2}$$
+$$H = \frac{p^2}{2m} + \frac{kq^2}{2}$$
+\subparagraph{General potential in 3D in Cartesian}
+$$L = \frac{1}{2} m\left(\dot{x}^2+\dot{y}^2+\dot{z}^2\right)- V(x,y,z)$$
+$$H = \frac{p_x^2+p_y^2+p_z^2}{2m} + V(x,y,z)$$
+\subparagraph{General potential in 3D in spherical}
+$$L = \frac{1}{2} m\left(\dot{r}^2+r^2\dot{\theta}^2+r^2\sin^2 \theta \dot{\varphi}^2\right)- V(r,\theta, \varphi)$$
+$$\begin{cases}
+p_r = m\dot{r}^2\\
+p_\theta = mr^2 \dot{\theta}\\
+p_\varphi = mr^2\sin^2\theta \dot{\varphi}
+\end{cases}$$
+\begin{align*}
+H = p_r\dot{r} + p_\theta \dot{\theta} +p_\varphi \dot{\varphi} - L = \frac{p_r^2}{m}+\frac{p_\theta^2}{mr^2}+\frac{p_\varphi^2}{mr^2\sin^2\theta} -\frac{1}{2} m\left(\frac{p_r^2}{m^2}+\frac{p_\theta^2}{m^2r^2}+\frac{p_\varphi^2}{m^2r^2\sin^2\theta}\right)+ V(r,\theta, \varphi)  =\\= \frac{1}{2m} \left(p_r^2+\frac{p_\theta^2}{r^2}+\frac{p_\varphi^2}{r^2\sin^2\theta}\right)+ V(r,\theta, \varphi)
+\end{align*}
+
+
+\paragraph{N particles without interaction}
+$$L = \sum_i \frac{1}{2}m_i \dot{\vec{r}}_i^2 - V(\vec{r}_i) = \sum_{\alpha, i} \frac{1}{2}m_i {\dot{\vec{r}}_i^\alpha}^2 - V(\vec{r}_i)$$
+$$H = \sum_{\alpha, i}  \frac{{p_i^\alpha}^2}{2m_i} + \sum V(r_i)$$
+\subsection{Movement equations in Hamiltonian formalism}
+$$dH = \sum_i \frac{\partial H}{\partial q_i}dq_i+\sum_i \frac{\partial H}{\partial p_i}dp_i+ \frac{\partial H}{\partial t}dt$$
+
+On the other hand
+\begin{align*}
+dL =  \sum_i \frac{\partial L}{\partial q_i}dq_i+\sum_i \frac{\partial L}{\partial\dot{q}_i}d\dot{q}_i+ \frac{\partial L}{\partial t}dt = \sum_i \frac{d}{dt}\frac{\partial L}{\partial \dot{q}_i}dq_i+\sum_i \frac{\partial L}{\partial\dot{q}_i}d\dot{q}_i+ \frac{\partial L}{\partial t}dt =\\= \sum_i \dot{p}_i dq_i+\sum_i p_i d\dot{q}_i+ \frac{\partial L}{\partial t}dt = \sum_i \dot{p}_i dq_i+\underbrace{d \left(\sum_i p_i \dot{q}_i\right)}_{=\sum_i \dot{q}_i d p_i+\sum_i \dot{p}_i d q_i}- \sum_i \dot{q}_i d p_i+ \frac{\partial L}{\partial t}dt
+\end{align*}
+$$dH = d\left( \sum p_i \dot{q}_i - L \right) = -\sum \dot{p_i} dq_i + \sum \dot{q}_i dp_i - \frac{\partial L}{\partial t}dt$$
+
+Thus
+$$\begin{cases}
+\dot{p}_i = -\frac{\partial H}{\partial q_i} \\
+\dot{q} = \frac{\partial H}{\partial p_i}
+\end{cases}$$
+
+\paragraph{Equivalence of Hamilton and Euler-Lagrange equations}
+$$\dot{p}_i = \frac{d}{dt} \frac{\partial L}{\partial \dot{q}_i}_{q=\text{const}}=  \frac{\partial L}{\partial q_i}_{\dot{q}=\text{const}}$$
+$$\frac{\partial L}{\partial q_i}_{p=\text{const}}=\frac{\partial L\big( q, \dot{q}(q,p,t),t \big)}{\partial q_i}_{p=\text{const}}=\frac{\partial L}{\partial q_i}_{\dot{q}=\text{const}} + \sum_j \frac{\partial L}{\partial \dot{q}_j}\frac{\partial \dot{q}_j}{\partial q_i}_{p=\text{const}}$$
+Thus
+$$\dot{p}_i = \frac{\partial L}{\partial q_i}_{p=\text{const}} - \sum_j p_j\frac{\partial \dot{q}_j}{\partial q_i}_{p=\text{const}} = -\frac{\partial }{\partial q_i}\left[ \sum p_j \dot{q}_j - L \right]_{p=\text{const}} = -\frac{\partial H}{\partial q_i}_{p=\text{const}}$$
+
+
+\paragraph{Examples of Hamilton equations}
+\subparagraph{Free particle}
+$$H = \frac{p^2}{2m}$$
+$$\dot{p} = 0 \Rightarrow p = p_1$$
+$$\dot{q}=  \frac{p_0}{m}$$
+$$q(t) = \frac{p_0}{m}t+q_0$$
+\subparagraph{harmonic oscillator}
+$$H = \frac{p^2}{2m} + \frac{kq^2}{2}$$
+$$p = -\frac{\partial H}{\partial q} = -kq$$
+$$\dot{q} = \frac{\partial H}{\partial p} = \frac{p}{m}$$
+$$\ddot{q} = -\frac{k}{m}q$$
+\subparagraph{N particles without interaction}
+$$H = \sum_{i, \alpha} \frac{{p_i^\alpha}^2}{2m_i} + \sum_i V(\vec{r}_i)$$
+$$\dot{r}_i^\alpha = \frac{p_i^\alpha}{m_i}$$
+$${\dot{p}_i^\alpha} = -\frac{\partial V(\vec{r}_i)}{\partial r^\alpha_i}$$
+Thus
+$$m\ddot{r}_i^\alpha=-\frac{\partial V(\vec{r}_i)}{\partial r^\alpha_i}$$
+\subsection{Phase space}
+Given $n$ degrees of freedom, phase space is $2n$-dimensional space, where coordinates are position and momentum. Each point uniquely describes state of the system. Pathes in phases space can't intersect.
+\paragraph{Liouville's theorem }
+In phase space volume is conserved in time. 
+
+\subsection{Switching between Lagrangian and Hamiltonian}
+
+The switch is a case of Legendre transform.
+\paragraph{Legendre transformation}
+Suppose we have $f(x)$ and $y=f^\prime(x)$, define $g(y)$ - Legendre transformation of $f(x)$:
+$$g(y) = y \cdot x(y) - f(x(y))$$
+$$\frac{dg}{dy} = x(y) + yx^\prime(y) - \frac{df}{dx} \frac{dx}{dy} = x(y) + yx^\prime(y) -yx^\prime(y) = x(y)$$
+Thus $x = g^\prime(x)$ and we can perform Legendre transformation of $g(y)$:
+$$\tilde{f}(x)= y(x) x - g(y(x)) = yx - (yx - f(x)) = f(x)$$
+\paragraph{Example}
+$$f(x) = ax^2 \Rightarrow y = 2ax \Rightarrow x= \frac{y}{2a}$$
+$$g(y) = yx- f(x) = \frac{y}{2a}y  -a \left(\frac{y}{2a}\right)^2 = \frac{y^2}{4a}$$
+\paragraph{Example}
+$$f(x) = e^x \Rightarrow y = e^x \Rightarrow x= \ln y$$
+$$g(y) = yx- f(x) = y\ln y  - y = y (\ln y -1)$$
+\subsection{Lagrangian}
+In this case $x$ is $\dot{q}$ and $y$ is $p$.
+If we perform Legendre transformation on $L$ we get $H$:
+$$H = \sum p_i \dot{q}_i - L$$

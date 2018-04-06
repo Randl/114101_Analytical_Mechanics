@@ -1,0 +1,44 @@
+\paragraph{Example}
+Suppose following initial conditions: $\eta(0) = L$ and $\dot{\eta} = 0$
+Then $A=L$ and $\varphi = 0$.
+\subsection{$N$ non-coupled oscillators}
+$$L  = \sum_i \left( \frac{1}{2}m_i\dot{\eta}_i^2  - \frac{1}{2} k_i  \eta_i^2\right)$$
+Movement equations are:
+$$\ddot{\eta}_i = -\frac{k_i}{m_i} \eta_i$$
+$$\eta_i = a e^{i\omega_i t}$$
+Define 
+$$T = (T)_{ij}$$
+In our case
+$T_{ij} = \delta_{ij} m_i$
+And define $$\eta = \begin{pmatrix}\eta_1 \\ \vdots \\ \eta_n\end{pmatrix}$$
+And $V_{ij} = \delta_{ij} k_i$.
+
+Then
+$$T\dot{\eta} = \begin{pmatrix} \sum T_{1i}\eta_i \\ \vdots \\ \sum T_{Ni}\eta_i \end{pmatrix}$$ 
+$$\dot{\eta}^T T\dot{\eta} = \sum_{i,j} T_{ij} \dot{\eta}_i \dot{\eta}_j$$
+For our case $$\dot{\eta}^T T\dot{\eta} = \sum_{i,j} \delta_{ij} m_i \dot{\eta}_i \dot{\eta}_j = \sum_i m_i \dot{\eta}_i^2$$
+and
+$$\eta^T V \eta = \sum_i k_i \eta^2_i$$
+$$L = \frac{1}{2} \dot{\eta}^T T\dot{\eta} + \frac{1}{2} \eta^T V \eta $$
+
+
+\subsection{$N$ coupled oscillators}
+Since potentials are now dependent of each other, lets write Taylor series:
+$$V(\eta_1, \dots, \eta_N) = \underbrace{V_0}_{0} + \underbrace{\frac{\partial V}{\partial \eta_i}_{\eta=0} \eta_i}_{0} + \frac{1}{2}\frac{\partial^2 V}{\partial \eta_i \partial \eta_j}_{\eta=0} \eta_i \eta_j + \dots$$
+Thus
+$$V = \frac{1}{2} \frac{\partial^2 V}{\partial \eta_i \partial \eta_j}_{\eta=0} \eta_i \eta_j = \frac{1}{2} \eta^T V \eta$$
+The potential matrix is
+$$V_{ij} = \frac{\partial^2 V}{\partial \eta_i \partial \eta_j}$$
+
+Now, for kinetic energy:
+$$T = \sum_{i} \frac{1}{2} m_j \dot{\eta}^2_i$$
+Then $T_{ij} = \delta_{ij} m_i$.
+
+For generalized coordinates:
+$$\dot{x}_i = \sum_j \frac{\partial x_i}{\partial q_j} \dot{q}_j$$
+So
+$$T = \frac{1}{2} \sum_i m_i \left( \sum_j \frac{\partial x_i}{\partial q_j} \dot{q}_j \right)^2 = \frac{1}{2} \sum_i m_i \sum_j \frac{\partial x_i}{\partial q_j} \dot{q}_j \sum_k \frac{\partial x_i}{\partial q_k} \dot{q}_k = \frac{1}{2} \sum_{j,k} \left( \underbrace{\sum_i m_i   \frac{\partial x_i}{\partial q_j} \frac{\partial x_i}{\partial q_k}}_{m_{jk}(q)}\right) \dot{q}_j \dot{q}_k $$
+
+Since we all elements in $T$ are at least second-order , we can approximate $m_{jk}(q) = m_{jk}(0)$ since everything else is negligible:
+$$T_{ij} = \frac{1}{2} \sum_{i,j} m_{jk_0} \dot{\eta}_j \dot{\eta}_k$$
+i.e. $T_{jk} = m_{jk_0}$

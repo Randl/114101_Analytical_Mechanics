@@ -1,0 +1,53 @@
+\subsection{Euler angles}
+\begin{center}
+	\includesvg[eps,svgpath = lect22/,width=0.5\linewidth]{Eulerangles}
+\end{center}
+We do three rotations - around $z$ axis by $\varphi$, then around $x$ axis by $\theta$, and once again around $z$ axis by $\psi$.
+Denote
+$$D = \begin{pmatrix}
+\cos \varphi&\sin \varphi & 0\\
+-\sin \varphi & \cos \varphi & 0\\
+0&0&1
+\end{pmatrix}$$
+$$C = \begin{pmatrix}
+1&0&0\\
+0&\cos \theta&\sin \theta \\
+0&-\sin \theta & \cos \theta \\
+\end{pmatrix}$$
+$$B = \begin{pmatrix}
+\cos \psi&\sin \psi & 0\\
+-\sin \psi & \cos \psi & 0\\
+0&0&1
+\end{pmatrix}$$
+Now
+$A= BCD$
+and
+$$\begin{pmatrix}
+x'\\y'\\z'
+\end{pmatrix} = A\begin{pmatrix}
+x\\y\\z
+\end{pmatrix}$$
+
+\paragraph{Calculation of angular velocity}
+$$0\leq \theta < \pi$$
+$$0\leq \varphi, \psi < 2\pi$$
+In body's system
+$$\vec{\dot{\psi}} = \begin{pmatrix}
+0\\0\\\dot{\psi}
+\end{pmatrix}$$
+$$\vec{\dot{\theta}} = \begin{pmatrix}
+\dot{\theta}\cos \psi\\\dot{\theta}\sin \psi\\0
+\end{pmatrix}$$
+$$\vec{\dot{\varphi}} = \begin{pmatrix}
+\dot{\varphi}\sin \theta \sin \varphi\\\dot{\varphi}\sin \theta \cos \varphi\\\dot{\varphi} \cos \theta
+\end{pmatrix}$$
+Thus
+$$\vec{\Omega} = \begin{pmatrix}
+\dot{\varphi}\sin \theta \sin \varphi+\dot{\theta}\cos \psi\\\dot{\varphi}\sin \theta \cos \varphi-\dot{\theta}\sin \psi\\\dot{\varphi} \cos \theta+\dot{\psi}
+\end{pmatrix}$$
+
+Find kinetic energy
+$$T_{rot} = \frac{1}{2} I_1 \left( \dot{\varphi}\sin \theta \sin \varphi+\dot{\theta}\cos \psi \right)^2 + \frac{1}{2} I_2 \left( \dot{\varphi}\sin \theta \cos \varphi-\dot{\theta}\sin \psi \right)^2 
++ \frac{1}{2} I_3 \left( \dot{\varphi} \cos \theta+\dot{\psi} \right)^2 $$
+For symmetrical gyroscope ($I_1=I_2$)
+$$T_{rot} = \frac{1}{2} I_1 \left( \dot{\varphi}^2 \sin^2 \theta + \dot{\theta}^2  \right) +  \frac{1}{2} I_3 \left( \dot{\varphi} \cos \theta + \dot{\psi}  \right)^2$$

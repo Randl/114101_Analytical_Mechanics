@@ -1,0 +1,41 @@
+\section{Two body problem}
+Configuration space - 6 degrees of freedom - $q$,$\dot{q}$, $t$.
+
+Phase space - 12 degrees of freedom - $q$, $p$, $t$.
+
+Then
+$$L = \frac{m\vec{\dot{r}}_1}{2} - \frac{m_2\vec{\dot{r}}_2^2}{2} - V(|\vec{r}_1 - \vec{r}_2|)$$
+$$H = \frac{m\vec{\dot{r}}_1}{2} + \frac{m_2\vec{\dot{r}}_2^2}{2} - V(|\vec{r}_1 - \vec{r}_2|)$$
+Since Hamiltonian is invariant under $$\begin{cases}
+\vec{r^\prime}_1 = \vec{r}_1 + \alpha \vec{r} \\
+\vec{r^\prime}_2 = \vec{r}_2 + \alpha \vec{r} \\
+\end{cases}$$, momentum of the center of mass is conserved, i.e. all three of its components.
+
+Denote $a=\frac{m_1}{m_1+m_2}$ and $b=\frac{m_2}{m_1+m_2}$ and 
+$$\begin{cases}
+\vec{r} = \vec{r}_1 - \vec{r}_2\\
+\vec{R} = a\vec{r}_1 + b\vec{r}_2
+\end{cases}$$
+For transformation to be canonical, we want
+$$P_i = \sum_j p_j \frac{\partial q_j}{\partial Q_i}$$
+$$\vec{P}_{\vec{r}} = \vec{p}_1 \frac{\partial \vec{r}_1}{\partial \vec{r}} +  \vec{p}_2 \frac{\partial \vec{r}_2}{\partial \vec{r}} = b\vec{p}_1 - a\vec{p}_2$$
+$$\vec{P}_{\vec{R}} = \vec{p}_1 + \vec{p}_2$$
+$$H = \frac{\vec{P}_R^2}{2(m_1+m_2)} + \frac{\vec{P}_r^2}{2\mu}+V(r)$$
+
+Take a look at 
+$$H^\prime = \frac{\vec{p}_{\vec{r}}^2}{2\mu} + V(r)$$
+
+Since angular momentum $\vec{J} = \vec{r} \times \vec{p}_r$ is conserved, the movement is in plane.
+
+$$H = \frac{\vec{p}_x + \vec{p}_y}{2\mu} + V(r)$$
+
+Now let's switch to polar coordinates:
+$$p^2_r + \frac{p^2_\theta}{r^2} = p^2_x + p^2_y$$
+$$H = \frac{p^2_r}{2\mu} + \frac{p^2_\theta}{2\mu r^2} +V(r)$$
+$\theta$ is cyclical coordinates:
+$$H = \frac{p^2_r}{2\mu} + U_{eff}(r)$$
+where $U_{eff}(r) = \frac{p_\theta^2 }{2\mu r^2} + V(r)$.
+
+Now
+$$\frac{dr}{dt} = \dot{r} = \frac{\partial H}{\partial p_r} = \frac{p_r}{\mu} = \sqrt{\frac{2}{\mu} (E-U)}$$
+$$t(r) = t_0 + \int_{r_0}^r \frac{dr}{\sqrt{\frac{2}{\mu} (E-U)}}$$

@@ -1,0 +1,20 @@
+\subsection{Variational principle}
+\subsubsection{How to find extremum of functional?}
+First of all, how to find extremum of function? We need to find $x_0$ such that $\vec{\nabla} f = 0$.
+
+For functional, lets choice different path between same points $q^\prime(t) = q(t) + \delta q(t)$. We can define a family of paths as $q(t) \to q(t)+u\cdot \delta q(t)$.
+
+Define $g(u) = S\left[ q(t) + u \cdot \delta q(t) \right] = \int_0^\tau dt L(q(t) + u\cdot  \delta q(t), \dot{q}(t) + u\dot{\delta} q(t), t)$.
+
+What is extremum of $g$?
+$$\frac{dg}{du} = 0$$
+$$\frac{dg}{du} = \frac{d}{du} \left( \int_0^\tau dt L(q(t) + u\delta q(t), q(t) + u\dot{\delta} q(t), t) \right) $$
+Using Leibnitz rule, chain rule and denoting variable of Lagrangian as $q$. ($\frac{d}{du}\left[ q(t) + u\delta q(t)\right] = \delta q(t)  $ and also $\frac{d}{dq} \left[ q+\delta q \right] = 1$).
+$$\frac{dg}{du} = \int_0^\tau dt \left[ \frac{\partial L}{\partial q} \delta q + \frac{\partial L}{\partial \dot{q}} \dot{\delta} q \right] $$
+Integrating second term by parts ($f= \frac{\partial L}{\partial q}$ and $g = \frac{\partial q}{\partial u}$)
+$$\frac{dg}{du} = \int_0^\tau dt \left[  \frac{\partial L}{\partial q} \delta q(t) - \delta q(t) \frac{d}{dt} \left(  \frac{\partial L}{\partial \dot{q}}  \right) \right] + \left[\frac{\partial L}{\partial \dot{q}} \delta q(t) \right]_0^\tau$$
+Since $\delta q (0) = \delta q (\tau) = 0$:
+$$\frac{dg}{du} = \int_0^\tau dt \left[ \frac{\partial L}{\partial q} - \frac{d}{dt} \left(  \frac{\partial L}{\partial \dot{q}}  \right) \right] \delta q(t) = 0$$
+Since it is right for any $\delta q$,
+$$\frac{\partial L}{\partial q} - \frac{d}{dt} \left(  \frac{\partial L}{\partial \dot{q}}\right) = 0$$
+$$\frac{\partial L}{\partial q} = \frac{d}{dt} \left(  \frac{\partial L}{\partial \dot{q}}\right) $$

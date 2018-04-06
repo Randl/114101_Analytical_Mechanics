@@ -1,0 +1,100 @@
+We got the following Lagrangian:
+$$L = \frac{1}{2} \dot{\eta}^T T \dot{\eta} - \frac{1}{2} \eta^T V \eta$$
+
+From Lagrangian we derive $n$ motion equations:
+$$\frac{d}{dt}\left[ \frac{\partial L}{\partial \dot{\eta}_k} \right] = \frac{\partial T}{\partial \eta_k}$$ 
+$$\frac{\partial L}{\partial \dot{\eta}_k} = \frac{\partial T}{\partial \dot{\eta}_k} = \frac{1}{2}  T_{kj} \dot{\eta}_j \frac{1}{2}  T_{ki} \dot{\eta}_i =  T_{ki} \dot{\eta}_i   $$
+$$\frac{d}{dt}\left[ \frac{\partial L}{\partial \dot{\eta}_k} \right]  = T_{ki} \ddot{\eta}_i$$
+$$\frac{\partial T}{\partial \eta_k} = -\frac{\partial V}{\partial \eta_k} = -V_{ki} \eta_i$$
+
+Thus
+$$ T_{ki} \dot{\eta}_i = -V_{ki} \eta_i$$  
+In matrix form
+$$T \ddot{\eta} = -V \eta$$
+
+\paragraph{Simple case}
+In simple case $T_{ji} = m_j \delta_{ji}$ and $V_{ji} = k_i \delta_{ji}$. The equation is 
+$$m_i\ddot{\eta}_i = -k_i \eta_i$$
+$$\eta_i = a+i e^{-i\omega t}$$
+
+\subsubsection{Diagonalization of the problem}
+We'll show that there is coordinates such that both $T$ and $V$ are diagonal, and thus the problem is simple in this set of coordinates.
+\paragraph{Finding eigenfrequencies}
+$$T_{kj} \ddot{\eta}_k + V_{kj} \eta_j = 0$$
+Guess solution
+$$\eta_k = ca_k e^{-i\omega t}$$
+$$\ddot{\eta}_k = -\omega^2 ca_k e^{-i\omega t}$$
+Thus
+$$\omega^2 T_{kj} a_j = V_{kj} a_j$$
+$$(V-\omega^2T)a = 0$$
+
+We have solution $a \neq 0$ if $ \det V-\omega^2 T = 0$.
+Denote $\lambda_1,\dots,\lambda_n$ solutions of this equation, i.e. $\omega_k^2 = \lambda_k$ such that $ \det V-\omega^2 T = 0$. and vector $\vec{a}_k \neq 0$ such that 
+$(V-\omega^2T)a = 0$.
+
+
+Lets show that $\lambda_k$ is real and positive, thus $\omega_k$ describes oscillations of the system. 
+$$(V-\omega^2T)a = 0$$
+$$a^\dagger(V-\omega^2T)a = 0$$
+where $*$ is complex conjugate and $\dagger$ is transposed complex conjugate. 
+$$\omega^2 = \frac{a^\dagger V a}{a^\dagger T a}$$
+
+Lets look on 
+$$\left(a^\dagger V a\right)^* = a^T {V^T}^* a^*$$
+But $V^\dagger = V$, since it real and symmetric:
+$$\left(a^\dagger V a\right)^*  = a^\dagger V a$$
+i.e. $a^\dagger V a$ is real.
+
+Denote $a = \alpha + i \beta$.
+$$a^\dagger V a = \left(\alpha - i \beta\right)^TV\left(\alpha + i \beta\right) = \alpha^T V \alpha + \beta^T V \beta $$
+Since we are looking at steady equilibrium, $V$ is positive around it, and thus the whole thing is positive. 
+
+We can do the same for $T$, and $T$ is positive since it's kinetic energy. 
+
+If $V<0$ (for example, unstable equilibrium), the solution isn't oscillator. We get complex number substituted in exponent, acquiring real exponent.
+
+We acquired $N$ eigenfrequencies and $N$ corresponding eigenvectors.
+
+Then general solution is
+$$\eta(t) = \sum_j c_j a_j e^{i\omega_j t}$$
+In matrix form, if we denote $A(t) = \left(a_{j\downarrow} e^{i\omega_j t}\right)_{kj}$ i.e. matrix of columns of mode solutions:
+$$\eta(t) = A(t)\vec{c} $$
+
+\paragraph{Example}
+A system of three springs and two masses. Denote $x_1$ and $x_2$ the displacement of masses from equilibrium. Denote middle spring as $k_3$.
+$$T = \frac{1}{2}m_1\ddot{x}_1+\frac{1}{2}m_2\ddot{x}_2$$
+$$V = \frac{1}{2}k_1x_1^2+\frac{1}{2}k_2x_2^2+\frac{1}{2}k_3(x_1-x_2)^2 = \frac{1}{2} (k_1+k_3)x_1^2 +  \frac{1}{2} (k_2+k_3)x_2^2 - k_3 x_1x_2$$
+Then in matrix form:
+$$T  = \begin{pmatrix}
+m_1&0\\0&m_2
+\end{pmatrix}$$
+$$V  = \begin{pmatrix}
+k_1+k_3&-k_3\\-k_3&k_2+k_3
+\end{pmatrix}$$
+
+To find eigenfrequencies we need
+$$(V - \omega^2 T) \vec{a} = 0$$
+$$V - \omega^2 T =  \begin{pmatrix}
+k_1+k_3-\omega^2m_1&-k_3\\-k_3&k_2+k_3-\omega^2m_2
+\end{pmatrix}$$
+
+$$\det (V - \omega^2 T) = (k_1+k_3-\omega^2m_1)(k_2+k_3-\omega^2m_2) - k_3^2 = 0$$
+If $K_1=k_2=k_3$ and $m_1=m_2$:
+$$(2k-\omega^2m)^2 = k^2$$
+$$2k - \omega^2 m = \pm k$$
+
+$$ \begin{cases}
+\omega^2_1 =\frac{3k}{m}\\
+\omega^2_2 =\frac{k}{m}\\
+\end{cases}$$
+
+Now lets find eigenvectors:
+$$\begin{pmatrix}
+-k & -k\\-k&-k
+\end{pmatrix} \alpha_1 = 0$$
+
+
+$$\begin{pmatrix}
+k & -k\\-k&k
+\end{pmatrix} \alpha_2 = 0$$
+

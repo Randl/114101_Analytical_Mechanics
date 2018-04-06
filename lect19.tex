@@ -1,0 +1,52 @@
+Denote number of particles arriving to $d\Omega$, a ring acquired by rotating $d\theta$ around the axis, by $dN$. Define flux of particles as $I_0$, number of particles per unit area in unit time in ray. We want to find $\theta(b)$. We can acquire that 
+$$\varphi = \int_{r_{min}}^\infty \frac{l dr}{r^2 \sqrt{2m \left(E-V(r)-\frac{l^2}{2mr^2}\right)}}$$
+\paragraph{Example}
+$V(r) = \frac{\alpha}{r}$. Since $E=mv_0^2$ and $l=mv_0b$:
+$$\varphi = \int_{r_{min}}^\infty \frac{l dr}{r^2 \sqrt{2m \left(E-V(r)-\frac{l^2}{2mr^2}\right)}} = \int_{r_{min}}^\infty \frac{b dr}{r^2 \sqrt{1-\frac{b^2}{r^2}-\frac{2\alpha }{mv_0^2 r}}} = \cos^{-1} \left(\frac{\frac{\alpha }{mv_0^2b}}{\sqrt{1+\left(\frac{\alpha }{mv_0^2b}\right)^2}}\right)$$
+Denote $x=\frac{\alpha}{mv_0^2b}$:
+$$\cos \varphi  =  \frac{x}{\sqrt{1+x^2}}$$
+$$\cos^2 \varphi  =  \frac{x^2}{1+x^2}$$
+$$\cos^2 \varphi + x^2\cos^2 \varphi  =  x^2$$
+$$\cos^2 \varphi = x^2(1-\cos^2\varphi)$$
+$$\frac{1}{x^2} = \tan^2 \varphi $$
+$$\left(\frac{\alpha}{mv_0^2b}\right)^2 = \frac{1}{\tan^2 \varphi }$$
+$$b^2 = \frac{\alpha^2}{m^2v_0^4}\tan^2 \varphi$$
+Since angle of incidence is equal to angle of reflection, 
+$$b^2 = \frac{\alpha^2}{m^2v_0^4}\cot^2 \frac{\theta}{2}$$
+and generally from this equality
+$$2\varphi + \theta = 2\pi$$
+\subsection{Cross section of scattering}
+Lets calculate number of particles going to element of solid angle element $d\Omega=\sin \theta d\theta d\varphi$ (here $\theta$ and $\varphi$ are ones of spherical coordinates) per unit time, i.e. $\frac{dN}{dt}$:
+$$\frac{dN}{dt} = \frac{dN}{dt} \frac{d\Omega}{d\Omega} = \frac{dN}{dt} \frac{d\Omega}{d\Omega} \frac{d\sigma}{d\sigma} = \underbrace{\frac{dN}{dt d\sigma}}_{I_0} \cdot \underbrace{\frac{d\sigma}{d\Omega}}_{\parbox{2cm}{\scriptsize \centering differential cross section of scattering}} \cdot d\Omega$$
+Thus
+$$\frac{d\sigma}{d\Omega} d\Omega = \frac{1}{I_0}\frac{dN}{dt}$$
+Now, from geometry:
+$$d\sigma = 2\pi b db$$
+$$d\Omega = 2\pi \sin \theta d\theta$$
+Thus
+$$\frac{d\sigma}{d\Omega} = \frac{2\pi b db}{2\pi \sin \theta |d\theta|} = \frac{b(\theta)}{\sin(\theta)} \left|\frac{db}{d\theta}\right|$$
+\paragraph{Retherford scattering}
+For Retherford scattering
+
+$$b^2 = \frac{\alpha^2}{m^2v_0^4}\cot^2 \frac{\theta}{2}$$
+By multiplying by $\frac{1}{2}$ and differentiating both sides
+$$\frac{1}{2}\frac{d}{d\theta}b^2 = b\frac{db}{d\theta} = \frac{1}{2} \frac{\alpha^2}{m^2v_0^4}\frac{\cos \frac{\theta}{2}}{\sin^3  \frac{\theta}{2}}$$
+$$\frac{d\sigma}{d\Omega} = \frac{2\pi b db}{2\pi \sin \theta |d\theta|} = \frac{ b\frac{db}{d\theta}}{\sin(\theta)} = \frac{1}{2} \frac{\alpha^2}{m^2v_0^4}\frac{1}{\sin\theta} \frac{\cos \frac{\theta}{2}}{\sin^3  \frac{\theta}{2}} = \frac{\alpha^2}{4m^2v_0^4}\frac{1}{\sin^4  \frac{\theta}{2}} $$
+
+By substituting $\alpha = z_1z_2e^2$ and $E= \frac{mv^2}{2}$:
+$$\frac{d\sigma}{d\Omega}  =\left( \frac{z_1z_2 e^2}{2E}\right)^2\frac{1}{4\sin^4  \frac{\theta}{2}} $$
+
+\paragraph{Claim}
+Total cross section of scattering is
+$$\sigma_T = \int \frac{d\sigma}{d\Omega} d\Omega$$
+
+\section{Rigid body}
+Rigid body is set of points such that distance between each pair of them is constant - $r_{ij} = c_{ij}$, i.e. a body can't change it's form. 
+
+Denote a position of one of these points in lab frame as $\vec{\mathcal{R}}$, position of point in body frame $\vec{r}$, and position of body in lab frame $\vec{R}$. Lets define infinitesimal transformation of moving and rotation:
+$$d\vec{\mathcal{R}} = d\vec{R} + d\vec{\varphi} \times \vec{r}$$ 
+Where $d\vec{\varphi}$ is angle of rotation and $d\vec{R} $ displacement of origin.
+Then
+$$\vec{v} = \frac{d\vec{\mathcal{R}}}{dt} = \frac{d\vec{R}}{dt} + \frac{d\vec{\varphi}}{dt} \times \vec{r}$$
+Define $\vec{V} = \frac{d\vec{R}}{dt} $ and $\vec{\Omega} = \frac{d\vec{\varphi}}{dt}$:
+$$\vec{v} = \vec{V} + \vec{\Omega} \times \vec{r}$$

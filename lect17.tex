@@ -1,0 +1,74 @@
+\subsection{Types of trajectories and cycle time calculation in two-body problem}
+$$\begin{cases}
+H = \frac{p_r^2}{2\mu} + U(r)\\
+U(r) = V(r) + \frac{l^2}{2\mu r^2}
+\end{cases}$$
+
+\paragraph{Repelling potential}
+If we have repelling (positive) potential, there are no closed trajectories.
+% plot electricity
+\paragraph{Attractive}
+Suppose $V(r)$ is negative and inverse proportional to $r^2$:
+$$\lim_{r\to 0} -r^2 V(r) < \frac{l^2}{2p}$$
+(else, two bodies collide).
+
+If total energy is non negative, the movement is still not bounded. If it is negative, we can bound potential energy, i.e. $r$. In general case, the trajectory is not closed, it depends on if $\Delta \theta$ (change in $\theta$ after full cycle) is rational or not.
+
+\paragraph{Trajectory equation}
+Sometimes we are interested in $r(\theta)$ or $\theta(r)$, no matter how it progresses in time. That would give as spacial trajectory. We need to make sure that $r(\theta)$ or $\theta(r)$ is function (it can be ensured by choosing bounded interval or by not taking $\theta$ modulo $2\pi$).
+
+We can calculate
+$$\frac{d\theta}{dr} = \frac{d\theta}{dt} \frac{dt}{dr} = \frac{\dot{\theta}}{\dot{r}}$$
+$$d\theta = \frac{l}{mr^2} \frac{dr}{ \sqrt{\frac{2}{\mu}(E-U(r))}}$$
+$$\theta(r) - \theta(0) = \int_{r_0}^r \frac{l}{mr^2} \frac{dr}{ \sqrt{\frac{2}{\mu}(E-U(r))}}$$
+Thus
+$$\Delta \theta = 2\int_{r_{min}}^{r_{max}} \frac{l}{mr^2} \frac{dr}{ \sqrt{\frac{2}{\mu}(E-U(r))}}$$
+\paragraph{Kepler problem}
+$$V(r) = -\frac{\alpha}{r}$$
+$$U(r)= -2\mu \frac{\alpha}{r} + \frac{l^2}{r^2}$$
+$$\theta(r) - \theta(0) = \int_{r_0}^r \frac{l}{m{r^\prime}^2} \frac{dr}{ \sqrt{\frac{2}{\mu}\left(E+2\mu \frac{\alpha}{{r^\prime}} - \frac{l^2}{{r^\prime}^2}\right)}} $$
+Substituting $u=\frac{1}{r}$:
+$$\theta(r) - \theta(0) =  \int_{u}^{u_0} \frac{du}{\sqrt{\frac{2\mu E}{l^2} + \frac{2\mu \alpha u }{l^2} - u^2 }}$$
+Now $x = u -\frac{\mu \alpha }{l^2}$:
+$$\theta(r) - \theta(0)  = \int_{x_0}^x \frac{dx}{\sqrt{c^2-x^2}} = \arccos \frac{x}{c} \quad c = \frac{2\mu E}{l^2} + \frac{\mu^2 \alpha^2}{l^4}$$
+$$\cos \left(\theta - \theta_0\right) = \frac{x}{c} = \frac{  \frac{1}{r} - \frac{\mu \alpha}{l^2}}{\sqrt{\frac{2\mu E}{l^2} + \frac{\mu^2 \alpha^2}{l^4}}} = \frac{l^2}{\mu \alpha} \left( \frac{\frac{1}{r} - \frac{\mu \alpha}{l^2}}{\sqrt{1+ \frac{2El^2}{\mu \alpha^2}}} \right) $$
+\paragraph{Notation} Denote $e = \sqrt{1+ \frac{2El^2}{\mu \alpha^2}}$ and $P=\frac{\mu \alpha}{l^2}$.
+
+\paragraph{Trajectory equation}
+$$Pe\cos (\theta - \theta_0) = \frac{1}{r} - P$$
+We can choose $\theta_0$ to compensate $r_0$ term in definite integral, and thus
+$$\frac{1}{r} = P(1+ e\cos \theta)$$
+back to Cartesian:
+$$1 = P\sqrt{x^2+y^2}+Pex \Rightarrow  1 - Pex = P\sqrt{x^2+y^2} \Rightarrow  (1 - Pex)^2 = P^2(x^2+y^2)$$
+Then trajectory equation is
+$$P^2(1-e^2)x^2+2Pex+P^2y^2 = 0$$
+\paragraph{Parabola}
+If $E=0$, $e=1$ and $2px+p^2y^2 = 1$;
+$$x = \frac{1}{2p} - \frac{py^2}{2}$$
+\paragraph{Hyperbola}
+If $E>0$:
+$$p^2(1-e^2) x^2 + 2pex + p^2y^2 = 1$$
+Taking out full square:
+$$p^2(e^2-1)^2 \left( x - \frac{e}{p(e^2-1)} \right)^2 - p^2 (e^2-1) y^2 = 1$$
+Denote
+$$\begin{cases}
+A = \frac{1}{p(e^2-1)}\\
+B = \frac{1}{p\sqrt{e^2-1}}\\
+\end{cases}$$
+We got
+$$\frac{(x-eA)^2}{A^2} - \frac{y^2}{B^2} = 1$$
+which is hyperbola.
+\paragraph{Ellipse}
+If $E<0$ and thus $e < 1$, the equation, with same $A$ and $B$:
+
+$$\frac{(x+eA)^2}{A^2} + \frac{y^2}{B^2} = 1$$
+Note, that if $e=0$, $A=B$ and we get circular trajectory.
+\subparagraph{Cycle time}
+From second Kepler law:
+$$\frac{dS}{dt} = \frac{l}{2\mu} =  \text{const}$$
+$$S = T\frac{dS}{dt}$$
+However
+$$S = \pi AB$$
+$$\frac{\pi AB}{T} = \frac{l}{2\mu}$$
+By substitution of $A$ and $B$:
+$$T = \pi \frac{\mu}{2} $$

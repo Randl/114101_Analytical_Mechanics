@@ -1,0 +1,27 @@
+
+
+\paragraph{$\Omega$ is independent on point of reference}
+Suppose we have two reference points, with positions $\vec{r}_1$ and $\vec{r}_2$:
+$$\vec{r}_2 = \vec{r}_1 + \vec{a}$$
+$$\vec{v} = \vec{V}+ \Omega \times \vec{r}_2 = \vec{V}+ \Omega \times (\vec{r}_1+\vec{a}) = \underbrace{\vec{V}+\Omega \times \vec{a}}_{_{\parbox{2cm}{\scriptsize \centering Velocity of new reference point}}} \Omega \times \vec{r}_1$$
+
+\paragraph{Kinetic energy of rigid body}
+\begin{align*}
+T = \sum \frac{1}{2}m_i\vec{v}_i^2 = \sum \frac{1}{2}m_i\left(\vec{V} + \vec{\Omega} \times \vec{r}_i\right)^2 = \sum \frac{1}{2}m_i\vec{V}^2 + \sum m_i\vec{V} \left(\vec{\Omega} \times \vec{r}_i\right)+ \sum \frac{1}{2}m_i \left(\vec{\Omega} \times \vec{r}_i\right)^2 =\\= \frac{1}{2}MV^2 + \vec{V} \cdot \left(\vec{\Omega} \times \sum m_i \vec{r}_i\right) + \sum \frac{1}{2}m_i \left(\vec{\Omega} \times \vec{r}_i\right)^2
+\end{align*}
+
+If we choose center of mass, i.e. $\sum m_i \vec{r}_i$ and thus:
+\begin{align*}
+T = = \frac{1}{2}MV^2 + \sum \frac{1}{2}m_i \left(\vec{\Omega} \times \vec{r}_i\right)^2 = T_{cm} + T_{rot}
+\end{align*}
+$$ \left(\vec{\Omega} \times \vec{r}\right)^2 = \vec{\Omega}^2 \vec{r}^2 - \left(\vec{\Omega} \vec{r}\right)^2 = \Omega_i\Omega_i r^2 - \Omega_i r_i \Omega_j r_j = \Omega_i\Omega_j r^2 \delta_{ij} - \Omega_i r_i \Omega_j r_j $$
+(Note $\sum_i x = \sum_j \sum_i x \delta_{ij}$)
+In continuous limit:
+$$T_{rot} = \frac{1}{2} \rho(\vec{r}) \left(\vec{\Omega} \times \vec{r}\right)^2  d\vec{r} = \frac{1}{2} \int \rho(\vec{r})  \left[\Omega_i\Omega_j r^2 \delta_{ij} - \Omega_i r_i \Omega_j r_j\right] d\vec{r} = \frac{1}{2}\Omega_i \Omega_j \underbrace{\int \rho(\vec{r})( r^2 \delta_{ij} -  r_i r_j )d\vec{r}}_{I_{ij}} $$
+
+$I$ is tensor of inertia
+$$I = \begin{pmatrix}
+\int \rho(\vec{r}) (y^2+z^2) d\vec{r} & -\int \rho(\vec{r}) xy d\vec{r} & -\int \rho(\vec{r}) xz d\vec{r}\\ 
+-\int \rho(\vec{r}) xy d\vec{r} & \int \rho(\vec{r}) (x^2+z^2) d\vec{r} & -\int \rho(\vec{r}) yz d\vec{r}\\
+-\int \rho(\vec{r}) xz d\vec{r} & -\int \rho(\vec{r}) yz d\vec{r} & \int \rho(\vec{r}) (x^2+y^2) d\vec{r}  \\
+\end{pmatrix}$$

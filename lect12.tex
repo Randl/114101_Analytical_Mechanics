@@ -1,0 +1,57 @@
+\subsection{Poisson bracket}
+Given $f(q,p,t)$, and its total derivative by time:
+$$\frac{df}{dt} = \sum_i \left( \frac{\partial f}{\partial q_i} \frac{dq_i}{dt} + \frac{\partial f}{\partial p_i} \frac{dp_i}{dt}  \right) + \frac{\partial f}{\partial t} = \sum_i \left( \frac{\partial f}{\partial q_i} \frac{\partial H}{\partial p_i} + \frac{\partial f}{\partial p_i} \frac{\partial H}{\partial q_i}  \right) + \frac{\partial f}{\partial t}$$
+
+\paragraph{Poisson bracket}
+Given $f(q,p,t)$ and $g(q,p,t)$ define  Poisson bracket
+$$\left\{ f,g \right\} = \sum_i \left( \frac{\partial f}{\partial q_i} \frac{\partial g}{dp_i} + \frac{\partial f}{\partial p_i} \frac{\partial g}{\partial q_i}  \right)$$
+Then we get
+$$\frac{df}{dt} = \left\{ f, H \right\} + \frac{\partial f}{\partial t}$$
+
+If $f$ isn't explicitly dependent on time, then
+$$\left\{ f,H \right\} =0 \iff f \text{ conserved}$$
+
+\paragraph{Properties of Poisson brackets}
+\begin{itemize}
+	\item Anticommutativity: $$\{f, g\} = -\{g, f\}$$
+	\item  Bilinearity: $$\{af + bg, h\} = a\{f, h\} + b\{g, h\}, \quad \{h, af + bg\} = a\{h, f\} + b\{h, g\}, \quad a, b \in \mathbb R$$
+	\item  Product rule(Leibniz's rule): $$\{fg, h\} = \{f, h\}g + f\{g, h\}$$
+	\item  Jacobi identity: $$\{f, \{g, h\}\} + \{g, \{h, f\}\} +  \{h, \{f, g\}\} = 0$$
+\end{itemize}
+
+Also, if a function $k$ is constant over phase space (but may depend on time), then $\{f,\, k\} = 0$ for any $f$.
+
+\paragraph{Note}
+Movement equations are particular case of 
+$$\frac{df}{dt} = \left\{ f,H \right\} + \frac{\partial f}{\partial t} $$
+
+Taking $f=q$:
+$$\dot{q} = \left\{ q_i, H \right\} = \sum_i \left( \frac{\partial q_i}{\partial q_i} \frac{\partial H}{\partial p_i} + \frac{\partial q_i}{\partial p_i} \frac{\partial H}{\partial q_i}  \right) = \frac{\partial H}{\partial p_i}$$
+$$\dot{q} = -\frac{\partial H}{\partial q_i}$$
+
+\paragraph{Note}
+\begin{align*}
+\{q_i,q_j\} &= 0 \\
+\{p_i,p_j\} &= 0 \\
+\{q_i,p_j\} &= \delta_{ij}
+\end{align*}
+
+\paragraph{Claim}
+If $f$ and $g$ are conserved, then $h=\left\{ f,g \right\}$ is conserved too.
+\subparagraph{Proof}
+$$\left\{ h,H \right\} = \big\{ \left\{f,g \right\}, H \big\} = - \big\{ \left\{g,H \right\}, f \big\} - - \big\{ \left\{H,f \right\}, g \big\}  = 0$$
+
+\paragraph{Example}
+$$H = \frac{\vec{p}^2}{2m} + V(\vec{r})$$
+We know that angular momentum in directions $x$ and $y$ are conserved:
+$$l_x = yp_z-zp_y$$
+$$l_y = zp_x - xp_z$$
+We know that $\{ l_x, l_y \}$ is conserved too.
+
+$$\left\{ l_x, l_y \right\} = \left\{ yp_z - zp_y, zp_x - xp_z \right\}$$
+
+Opening by bilinearity and then as product:
+$$\left\{ yp_z, zp_x  \right\} =\left\{ yp_z, z  \right\}p_x + \left\{ yp_z, p_x \right\}z = \underbrace{\left\{ y, z  \right\}}_{0}p_zp_x + \left\{ p_z, z  \right\}yp_x + \underbrace{\left\{ y, p_x \right\}}_{0}p_zz+ \underbrace{\left\{p_z, p_x \right\}}_{0} yz  $$
+Thus
+
+$$\left\{ l_x, l_y \right\} = \left\{ yp_z - zp_y, zp_x - xp_z \right\} = yp_x\left\{ p_z, z \right\} + xp_y \left\{ z,p_z \right\} = -yp_x + xp_y = l_z$$

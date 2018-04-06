@@ -1,0 +1,80 @@
+\subsection{Cyclical coordinates in Hamiltonian formalism}
+\paragraph{Example}
+$$L = \frac{1}{2}m \left( \dot{r}^2 + r^2\dot{\theta}^2 \right) + V(r)$$
+$\theta$ is cyclical coordinate since Lagrangian doesn't depends on $\theta$. Also
+$$p_\theta = mr^2\dot{\theta}$$
+$$p_r = m\dot{r}$$
+i.e.
+$$H = p_r\dot{r} + p_\theta \dot{\theta} - L  = \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} + V(r)$$
+
+\paragraph{Definition}
+Coordinate is cyclical  if $\frac{\partial H}{\partial \dot{q}} = 0$. Coordinate is cyclical in Hamiltonian formalism iff it is cyclical if Lagrange formalism.
+\begin{align*}
+\frac{\partial H}{\partial q_i}_{p,t=\textmd{const}} = \frac{\partial}{\partial q_i} \left[  p_j\dot{q}_j - L(q,\dot{q},t)\right]_{p=\textmd{const}} = p_j \frac{\partial \dot{q}_j}{\partial q_i}_{p=\textmd{const}} - \frac{\partial L}{\partial q_i}_{\dot{q}=\textmd{const}} - \frac{\partial L}{\partial \dot{q}_j}\frac{\partial \dot{q}_j}{\partial q_i}_{p=\textmd{const}} =\\= p_j \frac{\partial \dot{q}_j}{\partial q_i}_{p=\textmd{const}} - \frac{\partial L}{\partial q}_{\dot{q}=\textmd{const}} - p_j\frac{\partial \dot{q}_j}{\partial q_i}_{p=\textmd{const}} = - \frac{\partial L}{\partial q}_{\dot{q}=\textmd{const}} 
+\end{align*}
+
+\paragraph{Example}
+Suppose $i$ is cyclical coordinates. We can reduce one degree of freedom: $$H(q_1, q_2, \dots, q_\alpha, \dots, q_n, p_1, \dots, p_\alpha, \dots, p_n, t) = H_\alpha(q_1, q_2, \dots, q_n, p_1, \dots, p_n, t)$$. Solving this problem we get $q_i$ and $p_i$ as a function of alpha, and
+$$\dot{q}_i = \frac{\partial H}{\partial p_i} = \frac{\partial H_\alpha}{\partial p_\alpha}$$
+$$q_i= q_{i0} + \int_0^t  \frac{\partial H_\alpha}{\partial p_\alpha} dt^\prime $$
+\paragraph{Notation}
+$$(q_1, q_2, \dots, q_n, p_1, \dots, p_n)= \left(n_1, \eta_2, \dots, \eta_{2n} \right)$$
+Define block matrix $J$:
+$$J = \begin{pmatrix}
+0&I_{n\times n}\\-I_{n\times n} & 0
+\end{pmatrix}$$
+$J$ is antisymmetric (where gradient is row vector).
+$$\dot{\vec{\eta}} = J \nabla_{\vec{\eta}} H^T$$
+
+Then
+$$\left\{ f(\eta), g(\eta) \right\} = \nabla_{\vec{\eta}}  f J \nabla_{\vec{\eta}}  g^T$$
+
+\subsection{Canonical transformation}
+$(q,p) \to (q^\prime, p^\prime)$ $\Rightarrow$ $\eta \to \eta^\prime$.
+In contrast to Lagrangian formalism, we can mix momenta and coordinates in our transformations. However, we want to limit ourselves to coordinates for which movement equations are fulfilled:
+$$\dot{q}^\prime_i = \frac{\partial H^\prime}{\partial p^\prime_i} \quad \dot{p}^\prime_i = -\frac{\partial H^\prime}{\partial q^\prime_i}$$
+Such transformation is called canonical transformation.
+\paragraph{1D oscillator}
+$$L = \frac{1}{2}m\dot{q}^2 - \frac{1}{2}kq^2$$
+Define $\omega^2 = \frac{k}{m}$:
+$$H = \frac{p^2}{2m} + \frac{kq^2}{2}$$
+Define transformation 
+$$\begin{cases}
+q = \sqrt{\frac{2p}{m\omega}} \sin q^\prime\\
+p = \sqrt{2m\omega p} \cos q^\prime\\
+\end{cases}$$
+i.e.
+$$\begin{cases}
+q^\prime = \arccot \frac{p}{2ma}\\
+p^\prime = \frac{p^2}{2m\omega} + \frac{q^@m\omega}{2} = \frac{1}{2m\omega} \left(p^2+m\omega^2 q^2\right) \\
+\end{cases}$$
+
+Then
+$$H =\omega p^\prime$$
+Then $\dot{q}^\prime = \omega$ and $\dot{p}^\prime = 0$, meaning
+$$\begin{cases}
+q^\prime(t) = q_1^\prime + \omega t\\
+p^\prime(t) = \frac{E}{\omega}
+\end{cases}$$
+Those coordinates are basically phase and amplitude.
+
+\paragraph{When transformation is canonical}
+%TODO vectors
+Suppose we have transformation $\eta \to \eta^\prime$ such that
+$$\dot{\vec{\eta}}^\prime = J \nabla_{\vec{\eta}^\prime} H^T$$
+Since
+$$H^\prime(\eta^\prime) = H\big( \eta (\eta^\prime) \big) $$
+$$\frac{\partial H^\prime}{\partial \eta^\prime_k} = \sum_m \frac{\partial H}{\partial \eta_m}\frac{\partial \eta_m}{\partial \eta_k}$$
+That means
+$$\dot{n}_i^\prime =  \sum_j \frac{\partial \eta^\prime_i}{\partial \eta_j} \dot{\eta}_j= \sum_{j,k} \frac{\partial \eta^\prime_i}{\partial \eta_j} J_{jk} \frac{\partial H}{\partial \eta_k} = \sum_m \left(\sum_{j,k}\frac{\partial \eta^\prime_i}{\partial \eta_j}  J_{jk}  \frac{\partial \eta^\prime_m}{\partial \eta_k}\right)\frac{\partial H^\prime}{\partial \eta^\prime_m}$$
+
+And we want
+$$\dot{\eta}_i^\prime = \sum_m J_{im} \frac{\partial H^\prime}{\partial q^\prime_m}$$ 
+i.e.
+$$J_{im} = \sum_{j,k}\frac{\partial \eta^\prime_i}{\partial \eta_j}  J_{jk}  \frac{\partial H}{\partial \eta_k} \Rightarrow D_{\vec{\eta}} \vec{\eta^\prime} \cdot J \cdot D_{\vec{\eta}} \vec{\eta^\prime}^T  = J$$ 
+where $D_{\vec{\eta}} \vec{\eta^\prime}$ is differential of $\vec{\eta^\prime}$ by $\vec{\eta}$:
+$$D_{\vec{\eta}} \vec{\eta^\prime} = \begin{pmatrix}
+\frac{\partial \eta^\prime_1}{\partial \eta_1}  & \dots & \frac{\partial \eta^\prime_1}{\partial \eta_{2n}}  \\\vdots & \ddots & \vdots \\
+\frac{\partial \eta^\prime_{2n}}{\partial \eta_1}  & \dots & \frac{\partial \eta^\prime_{2n}}{\partial \eta_{2n}} 
+\end{pmatrix}$$
+

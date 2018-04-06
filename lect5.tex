@@ -1,0 +1,100 @@
+There are two way to solve constrained problem:
+\begin{itemize}
+	\item Find constrained plain, i.e. solve $3n-m$-dimensional problem. This is called D'Alembert's principle.
+	\item Lagrange multipliers. Is useful when we cant find a parameterization for constrained plane or we want to see explicit constrains. This is $3n+m$-dimensional problem.
+\end{itemize}
+
+Constrained problem is
+$$m\ddot{\vec{r}}_\alpha = F^i_\alpha + f^i_\alpha$$
+where $i=1\dots n$ and $\alpha = 1,2,3$
+The problems are that the coordinates aren't independent and that we don't know explicit constraining force.
+\subsubsection{Solution with generalized coordinates}
+$$L = T - V$$
+is Lagrangian without constrains.
+We add the constraining force:
+$$\frac{d}{dt} \frac{\partial L}{\partial  \dot{r}^i_\alpha} - \frac{\partial L}{\partial  r^i_\alpha} =  f^i_\alpha $$
+
+Note that $L$ isn't full Lagrangian since it doesn't includes constrains. We want every force to be conservative. The simple way guarantee that, we can choose all constraining forces to be orthogonal to the movement direction.
+
+Define action
+$$S\left[ \vec{r}(t) \right] = \int L dt$$
+By perturbing the path:
+$$\frac{d}{du} S\left[ \vec{r}(t) + u\delta \vec{r}(t)\right] = \int dt \left[\frac{d}{dt} \frac{\partial L}{\partial \partial \dot{r}^i_\alpha} - \frac{\partial L}{\partial  r^i_\alpha}\right] \delta  r^i_\alpha$$
+But if $\vec{f} \perp \delta \vec{r}$, $\left[\frac{d}{dt} \frac{\partial L}{\partial \partial \dot{r}^i_\alpha} - \frac{\partial L}{\partial  r^i_\alpha}\right] \delta  r^i_\alpha = \vec{f} \cdot \delta \vec{r}= 0$, i.e. if we find a plane perpendicular to the constraining force, we can solve regular Euler-Lagrange equation.
+\paragraph{Example}
+Pendulum. 
+$$L = \frac{1}{2} m(\dot{x}^2+\dot{y}^2) - mgy$$
+By choosing $\theta$:
+$$L(\theta, \dot{\theta}) = \frac{1}{2}ml^2 \dot{\theta}^2 -mgl(1-\cos \theta) = \frac{1}{2}ml^2 \dot{\theta}^2 + mgl\cos \theta$$
+\paragraph{Example}
+Pendulum connected to disk rotating with constant angular velocity $\omega$. Constrain is
+$$c(x,y,t) = (r - R\sin \omega t)^2 + (r + R\cos \omega t)^2 - l^2$$
+The Lagrangian is identical. 
+$$L = \frac{1}{2} m(\dot{x}^2+\dot{y}^2) - mgy$$
+The constrained plane is
+$$x = R\cos \omega t + l\sin \theta $$
+$$y = -R\sin \omega t - l\cos \theta $$
+Differentiating:
+$$\dot{x} = -R\sin \omega t +l\cos \theta \dot{\theta} $$
+$$\dot{x} = -R\cos \omega t + l\sin \theta \dot{\theta} $$
+Thus
+$$L(\theta, \dot{\theta}, t) = \frac{1}{2}m\left( l^2\dot{\theta}^2 +R^2\omega^2 - 2R\omega l \dot{\theta}\sin \left(\omega t + \theta\right)\right) +mgR\sin \omega t +mgl \cos \theta$$
+Since $mgR\sin \omega t = \frac{d}{dt} \left( \frac{mgR}{\omega} \cos \omega t \right)$
+$$L(\theta, \dot{\theta}, t) = \frac{1}{2}m\left( l^2\dot{\theta}^2 +R^2\omega^2 - 2R\omega l \dot{\theta}\sin \left(\omega t + \theta\right)\right)  +mgl \cos \theta$$
+$$ml\ddot{\theta}^2-mRl\omega\cos (\omega t +\theta)(\omega+\dot{\theta}) = -mR\omega l \dot{\theta} \cos (\omega t + \theta) - mgl\sin \theta$$
+$$\ddot{\theta} = \frac{R\omega^2}{l} \cos (\omega t + \theta) - \frac{g}{l}\sin \theta$$
+
+\subsubitem{Lagrange multipliers}
+Lagrange multipliers is a way to solve optimization problem with constrains. 
+
+Suppose we want to find minimum of function $f(x,y)$ under constrain $c(x,y)=0$.
+Define function $g(x,y,\lambda) = f(x,y) - \lambda c(x,y)$
+Lets find minimum of that function:
+$$\begin{cases}
+0 =&\frac{\partial g}{\partial x} = \frac{\partial f}{\partial x}  - \lambda \frac{\partial c}{\partial x} \\
+0 =&\frac{\partial g}{\partial y} = \frac{\partial f}{\partial y}  - \lambda \frac{\partial c}{\partial y} \\
+0 =&\frac{\partial g}{\partial \lambda} = c(x,y)
+\end{cases}$$
+
+Thus we can define new Lagrangian
+$$L^\prime\left( r,\dot{r},\lambda_1(t), \dots, \lambda_m(t) \right) = L(r, \dot{r}, t) - \sum_{a=1}^m \lambda_a c_a(t)$$
+
+Now define action:
+$$S\left[ r(t), \lambda(t) \right] = \int dt L(r,\dot{r}, t) - \sum_{a=1}^m \lambda_a c_a(t)$$
+
+The resulting Euler-Lagrange equations are
+$$\begin{cases}
+\frac{d}{dt} \frac{\partial L}{\partial \dot{r}_\alpha} = \frac{\partial L}{\partial r_\alpha} \underbrace{- \sum_a \lambda_a \cdot \frac{\partial c}{\partial r_\alpha}}_{\text{constraining force}}\\
+0 =\frac{\partial L}{\partial \lambda_a}
+\end{cases}$$
+
+\paragraph{Example}
+Pendulum in plane (no gravity).
+
+$$L = \frac{1}{2} m\left( \dot{x} + \dot{y} \right)$$
+Constrain
+$$x^2+y^2-l^2 = 0$$
+$$L^\prime (x,y,\dot{x}, \dot{y}, \lambda) = \frac{1}{2} m\left( \dot{x} + \dot{y} \right) - \lambda(x^2+y^2-l^2)$$
+
+Deriving Euler-Lagrange:
+$$\begin{cases}
+m\ddot{x} = -2\lambda x\\
+m\ddot{y} = -2\lambda y\\
+x^2+y^2-l^2 = 0
+\end{cases}$$
+
+Solve the system:
+$$mx\ddot{x} + my\ddot{y} = 2\lambda(x^2+y^2 ) = 2\lambda l^2$$
+$$x\ddot{x} + y\ddot{y} = \frac{2\lambda l^2}{m}$$
+After solving it we get
+$$\lambda = \frac{1}{l^2} \frac{m(\dot{x}^2 + m\dot{y}^2)}{2} = \frac{E_k}{l^2}$$
+Back to other equations
+$$\begin{cases}
+m\ddot{x} = -\frac{2E_k}{l^2} x\\
+m\ddot{y} = -\frac{2E_k}{l^2} y\\
+\end{cases}$$
+Denote $\omega = \sqrt{\frac{2E_k}{ml^2}}$ acquiring
+$$\begin{cases}
+x = A \cos \left( \omega t + \varphi \right)\\
+y = A \sin \left( \omega t + \varphi \right)
+\end{cases}$$

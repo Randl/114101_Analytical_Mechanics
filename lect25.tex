@@ -1,0 +1,67 @@
+\section{Non-integrable systems}
+\subsection{Harmonic oscillator. Angle-Action variable}
+Hamiltonian of harmonic oscillator is:
+$$H = \frac{p^2}{2m} + \frac{1}{2} m\omega^2 q^2$$
+$$\begin{cases}
+\dot{p} = -\frac{\partial H}{\partial q} = -m\omega^2 q \\
+\dot{q} = \frac{\partial H}{\partial p} = \frac{p}{m}
+\end{cases}$$
+Thus
+$$\begin{cases}
+q = A\cos \left(\omega t  -\theta_0\right)\\
+p = m\omega A\sin \left(\omega t  -\theta_0\right)
+\end{cases}$$
+
+The movement in phase space is ellipses.
+
+Now define new coordinates, $I$ -- action variable and $\theta$ -- angle variable, in the following way:
+$$\begin{cases}
+q = \sqrt{\frac{2I}{m\omega}}\sin \theta\\
+p = \sqrt{2Im\omega}\cos \theta
+\end{cases}$$
+We can check that transformation is canonical by Poisson brackets:
+$$\left\{ q,p \right\}_{\theta, I} = \left\{ \sqrt{\frac{2I}{m\omega}}\sin \theta,\sqrt{2Im\omega}\cos \theta \right\}_{\theta, I} = 2\left\{ \sqrt{I}\sin \theta,\sqrt{I}\cos \theta \right\}_{\theta, I}  = 2 \cdot \left[ \sqrt{I} \cos \theta \cdot \frac{\cos \theta}{2\sqrt{I}}  + \frac{\sin \theta}{2\sqrt{I}} \cdot \sqrt{I} \sin \theta\right] = 1$$
+
+Now the Hamiltonian is 
+$$H = \omega I$$
+And Hamilton equations are
+$$\begin{cases}
+\dot{I} = 0\\
+\dot{\theta} = \omega
+\end{cases} \Rightarrow \begin{cases}
+I = \text{const}\\
+\theta = \omega t + \theta_0
+\end{cases}
+$$
+
+\paragraph{Definition}
+System with $n$ degrees of freedom is called integrable if exists canonical transformation 
+$(q_i,p_i) \to (\theta_i, I_i)$ such that $H = H(I_i, \dots, I_n)$. In this case 
+$$\begin{cases}
+\dot{I}_i = 0\\
+\dot{\theta}_i = \omega_i(I)
+\end{cases} \Rightarrow \begin{cases}
+I_i = \text{const}\\
+\theta_i = \omega_i(I) t + \theta_{0i}
+\end{cases}
+$$
+\subsection{Angle-Action variable for systems with one degree of freedom}
+$$H = \frac{p^2}{2m} + V(q)$$
+$H$ is energy and constant, also suppose $q$ is bounded: $q_1 \leq q \leq q_2$.
+
+So we are searching for canonical transformation such that $H = H(I)$. Define
+$$I = \frac{1}{2\pi} \oint p dq$$
+$$p = \sqrt{2m(E-V(q))}$$
+$$dt = \frac{dq}{\dot{q}} = \sqrt{\frac{m}{2}}\frac{dq}{\sqrt{E-V(q)}}$$
+Now, $T=\frac{2\pi}{\omega}$:
+$$\frac{2\pi}{\omega} = \oint \sqrt{\frac{m}{2}}\frac{dq}{\sqrt{E-V(q)}} = 2\sqrt{\frac{m}{2}} \oint  \frac{d}{dE}\sqrt{E-V(q)} dq = =\frac{d}{dE} \left(\oint  \sqrt{2m(E-V(q))} dq\right) = \frac{d}{dE}\oint p dq = 2\pi \frac{d}{dE}  I $$
+Thus
+$$\frac{dE}{dI} = \omega $$
+\subsection{2D movement}
+\subsubsection{Integrable system}
+Suppose system is integrable and movement is bounded. Then
+$$\begin{cases}
+I_1 = \text{const}\\I_2 = \text{const}\\\theta_1 = \omega_1(I) t + \theta_{01}\\\theta_1 = \omega_2(I) t + \theta_{02}
+\end{cases}$$
+
+Now, both $\theta$ are periodical, we can say that they move on torus.

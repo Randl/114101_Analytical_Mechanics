@@ -1,0 +1,67 @@
+So Euler-Lagrange equation is equivalent to minimum of action.
+\subsection{Principle of least action}
+Given mechanical system with $N$ degrees of freedom described with Lagrangian:
+$$L\left(q_1(t), \dots, q_n(t), \dot{q}_1(t), \dots, \dot{q}_n(t)\right)$$
+The physical path of system in configuration space would be the path whose action 
+$S\left[r(t)\right] = \int_{\tau_1}^{\tau_2} L(\vec{r}(t), \dot{\vec{r}}(t),t) dt$
+would be minimal. The condition for that are Euler-Lagrange equations for each of degrees of freedom:
+$$\frac{d}{dt}\left( \frac{\partial}{\partial \dot{q}_\alpha} L(\vec{r}, \dot{\vec{r}}, t) \right) = \frac{\partial}{\partial q_\alpha} L(\vec{r}, \dot{\vec{r}}, t) $$
+
+\paragraph{Example}
+Free particle:
+$$L = T - V = \frac{m\dot{\vec{r}}}{2}$$
+For 3D we have 3 equations:
+$$\frac{d}{dt} \left( \frac{\partial L}{\partial \dot{r}_\alpha} \right) = \frac{\partial L}{\partial r_\alpha} $$
+i.e.
+$$\frac{d}{dt} \left( m\dot{r}_\alpha \right) = 0$$
+$$m\ddot{\vec{r}} = 0$$
+The solution is
+$$\vec{r} = \vec{v}_0t+\vec{r}_0$$
+Now lets calculate action on physical path. The Lagrangian of this path is $L = \frac{m\vec{v}_0^2}{2}$
+$$ S\left[r(t)\right] = \int_{\tau_1}^{\tau_2} L(\vec{r}(t), \dot{\vec{r}}(t),t) dt = \frac{m\vec{v}_0^2}{2} \cdot \Delta t $$
+
+Units of Lagrangian are $\left[\text{energy}\right]$ and of action $\left[\text{energy}\cdot \text{time} \right]$ 
+
+Lets take different path:
+$$\vec{r}(t) = \vec{r}_0 + \vec{v}_0 \Delta t \sin \left( \frac{\pi}{2\Delta t} t \right)$$
+$$\dot{\vec{r}}(t) =\frac{\pi}{2} \vec{v}_0  \cos \left( \frac{\pi}{2\Delta t} t \right)$$
+$$L(\vec{r}, \dot{\vec{r}}) = \frac{1}{2} \frac{\pi^2}{4}m \vec{v}_0^2  \cos^2 \left( \frac{\pi}{2\Delta t} t \right)$$
+$$ S^\prime \left[r(t)\right] = \int_{\tau_1}^{\tau_2} L(\vec{r}(t), \dot{\vec{r}}(t),t) dt = \frac{\pi^2}{16} m\vec{v}_0^2  \cdot \Delta t  = \frac{\pi^2}{8}S\left[r(t)\right]$$
+
+\paragraph{Different FOV}
+Given FOV with velocity $\vec{v}_1$:
+$$L^\prime = \frac{m}{2} \left( \dot{\vec{r}} - \vec{v}_1 \right)^2  = \frac{m}{2}\dot{\vec{r}} - m\dot{\vec{r}} + \frac{m}{2}\vec{v}_1^2$$
+$$L^\prime  -L = - m\dot{\vec{r}} + \frac{m}{2}\vec{v}_1^2 $$
+
+Define $F$ such that $\frac{dF}{dt} = L^\prime - L$:
+$$F(\vec{r},t) =- m\vec{r} + \frac{m}{2}\vec{v}_1^2 t $$
+Then
+$$S^\prime \left[r(t)\right] = \int_{\tau_1}^{\tau_2} L(\vec{r}(t), \dot{\vec{r}}(t),t) + \frac{dF}{dt} dt =  S \left[r(t)\right] + \underbrace{\left( F(\tau_2) - F(\tau_1) \right)}_{\text{constant}}$$
+
+Since addition of constant doesn't influence extremums, the solution doesn't changes.
+
+Generally, we can define Lagrangian up to total derivative by time:
+$$L^\prime  = L  + \frac{dF}{dt}$$
+Basically that means we can drop everything that can be written as total derivative by time.
+\subsection{Lagrangian formalism for conservative forces depending on velocity}
+We can use Lagrangian formalism for conservative forces depending on velocity. Define generalized potential
+$$U(\vec{r}, \dot{\vec{r}},t)$$
+thus a Lagrangian is
+$$L = T - U(\vec{r}, \dot{\vec{r}},t) $$
+Then
+$$\frac{d}{dt} \left( \frac{\partial L}{\partial \dot{r}_\alpha} \right) = \frac{\partial L}{\partial r_\alpha}$$
+$$m\ddot{r}_\alpha - \frac{d}{dt} \left(  \frac{\partial U}{\partial \dot{r}_\alpha}  \right) = -  \frac{\partial U}{\partial r_\alpha} $$
+Define
+$$F_\alpha = \frac{d}{dt} \left(  \frac{\partial U}{\partial \dot{r}_\alpha}  \right)  -  \frac{\partial U}{\partial r_\alpha}$$
+
+For example, for electromagnetic force we'll use potential
+$$U = q \varphi(\vec{r},t) - q\vec{A} \left( \vec{r}, t \right) \dot{\vec{r}}$$
+
+\section{Generalized coordinates}
+Sometimes it's more convenient to use coordinate system different from Cartesian. For example if we have some kind of symmetry or restriction. Denote
+$$q_a = q_a\left( r_\alpha^i, t \right)$$
+And inverse is $r_\alpha^i(q_\alpha, t)$
+Now we want to take derivative of $r$:
+$$\frac{d}{dt} r_\alpha^i = \sum \frac{\partial  r_\alpha^i}{ q_a}\dot{q}_\alpha + \frac{\partial  r^i_\alpha}{ r}$$
+We can rewrite Lagrangian as function of $q$, $\dot{q}$ and $t$ by substituting $\vec{r}$ and $\dot{\vec{r}}$: $ L(\vec{q}(t), \dot{\vec{q}}(t),t)$. In new coordinates
+$$\frac{d}{dt}\left( \frac{\partial}{\partial \dot{q}_a} L(\vec{q}, \dot{\vec{q}}, t) \right) = \frac{\partial}{\partial q_a} L(\vec{q}, \dot{\vec{q}}, t) $$

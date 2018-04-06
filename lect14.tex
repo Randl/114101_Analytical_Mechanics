@@ -1,0 +1,29 @@
+\paragraph{Poisson brackets }
+$$\left\{ f\left( \eta \right) , g\left( \eta \right) \right\}_\eta = \nabla_{\vec{\eta}} f \cdot J \cdot \nabla_{\vec{\eta}} g^T $$
+Then
+$$\left\{\eta^\prime, \eta^\prime  \right\}_\eta = D_{\vec{\eta}} \vec{\eta^\prime} \cdot J \cdot D_{\vec{\eta}} \vec{\eta^\prime}^T = J$$
+i.e. basic Poisson brackets are conserved under canonical transformation. 
+\paragraph{Claim} For any $f,g$ Poisson brackets in old and new coordinates are equal.
+$$\left\{ f\left( \eta \right) , g\left( \eta \right) \right\}_\eta = \nabla_{\vec{\eta}} f \cdot J \cdot \nabla_{\vec{\eta}} g^T $$
+$$\left\{ f\left( \eta \right) , g\left( \eta \right) \right\}_{\eta^\prime} = \nabla_{\vec{\eta^\prime}} f \cdot J \cdot \nabla_{\vec{\eta^\prime}} g^T $$
+Since
+$$\nabla_{\vec{\eta^\prime}} f = \nabla_{\vec{\eta^\prime}} f \cdot D_{\vec{\eta}} \vec{\eta^\prime}$$
+$$\nabla_{\vec{\eta^\prime}} g^T = \left(\nabla_{\vec{\eta^\prime}} g \cdot D_{\vec{\eta}} \vec{\eta^\prime}\right)^T =  D_{\vec{\eta}} \vec{\eta^\prime}^T \cdot \nabla_{\vec{\eta^\prime}} g^T$$
+
+
+$$\left\{ f\left( \eta \right) , g\left( \eta \right) \right\}_{\eta^\prime} = \nabla_{\vec{\eta^\prime}} f \cdot D_{\vec{\eta}} \vec{\eta^\prime} \cdot J \cdot D_{\vec{\eta}} \vec{\eta^\prime}^T \cdot \nabla_{\vec{\eta^\prime}} g^T = \nabla_{\vec{\eta^\prime}} f \cdot  J \cdot \nabla_{\vec{\eta^\prime}} g^T$$
+
+\paragraph{Conclusion}
+Transformation $(q,p) \to (Q,P)$ ($\eta \to \eta^\prime$) would be canonical iff any of following is true
+\begin{enumerate}
+	\item Hamilton equations are fulfilled: $$\dot{Q} = \frac{\partial H^\prime}{\partial P} \quad \dot{P} = -\frac{\partial H^\prime}{\partial Q}$$  
+	\item $$\forall f,g \quad \left\{ f,g\right\}_{q,p} = \left\{ f,g\right\}_{Q,P}$$
+	\item $$\left\{ Q_i, Q_j \right\}_{q,p}= \left\{ P_i, P_j\right\}_{q,p} = 0$$ and $$\left\{ Q_i, P_j \right\}_{q,p} = \delta_{ij}$$
+\end{enumerate}
+The third condition is most practical
+\paragraph{Example}
+$$q\to P \quad p \to Q$$
+Then
+$$\left\{ Q,P \right\} = \left\{ p,q \right\} = -1$$
+
+\subsection{Infinitesimal canonical transformation }

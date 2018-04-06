@@ -1,0 +1,70 @@
+\subsection{Connection between symmetry and conservation laws}
+\paragraph{Noether's theorem}
+Suppose we have continuous transformation with parameter $\alpha$: $q \to q_\alpha(q)$ such that $q = q_{\alpha = 0} (q)$. If Lagrangian is invariant under transformation, i.e.
+$$L(\vec{q}_\alpha, \dot{\vec{q}}_\alpha,t)=L(\vec{q}, \dot{\vec{q}},t)$$
+Then exists conserved value $\frac{dQ}{dt} = 0$.
+$$Q = \sum \frac{\partial L}{\partial \dot{q}^i} \frac{\partial \dot{q}^i_\alpha}{\partial \alpha}_{\alpha = 0} = \sum_i p_i \frac{\partial \dot{q}^i_\alpha}{\partial \alpha}_{\alpha = 0}$$
+\subparagraph{Proof}
+\begin{align*}
+0 = \frac{d L}{d \alpha}_{\alpha = 0} = \sum_i \left[ \frac{\partial L}{\partial q^i} \frac{\partial q^i}{\partial \alpha}_{\alpha = 0}+\frac{\partial L}{\partial \dot{q}^i} \frac{\partial \dot{q}^i}{\partial \alpha}_{\alpha = 0}\right] = 
+\sum_i \left[ \frac{d}{dt}\left[\frac{\partial L}{\partial \dot{q}^i}\right] \frac{\partial q^i}{\partial \alpha}_{\alpha = 0}+\frac{\partial L}{\partial \dot{q}^i} \frac{d}{dt}\left[\frac{\partial q^i}{\partial \alpha}_{\alpha = 0}\right]\right] =\\= \sum_i \frac{d}{dt} \left[  \frac{\partial L}{\partial \dot{q}^i} \cdot \frac{\partial q^i}{\partial \alpha}_{\alpha = 0}\right] = \frac{d}{dt} \left[ \sum_i   \frac{\partial L}{\partial \dot{q}^i} \cdot \frac{\partial q^i}{\partial \alpha}_{\alpha = 0}\right] = \frac{dQ}{dt}
+\end{align*}
+\paragraph{Example}
+$$q_\alpha(q) = \big( q_1+\alpha, q_2, \dots, q_n \big)$$
+I.e. $q_1$ is cyclical, then $Q = p_1$.
+\paragraph{Example}
+Lagrangian which is independent on absolute positions (i.e. closed systems):
+$$L = \frac{1}{2}m_i{\dot{ \vec{r}}^i}^2 - V(\vec{r}^i - \vec{r}^j)$$
+Define $\vec{\lambda}$. The our transformation is
+$$\vec{r}^i \to \vec{r}^i +\vec{\lambda}$$
+Then
+$$Q = \sum p_i \cdot \frac{\partial q_\lambda^i}{\partial \lambda}_{\lambda= 0} = \sum p_i = P_i$$
+\paragraph{Example}
+$$L = \frac{1}{2}m (x^2+y^2+z^2) - V(x^2+y^2+z^2)$$
+Define rotation transformation
+$$\begin{cases}
+x_\alpha = x\cos \alpha + y\sin \alpha\\
+y_\alpha = y\cos \alpha + x\sin \alpha\\
+z= z
+\end{cases}$$
+$$\begin{cases}
+\frac{\partial x_\alpha}{\partial \alpha}_{\alpha = 0} = y\\
+\frac{\partial y_\alpha}{\partial \alpha}_{\alpha = 0} = -x\\
+\frac{\partial z_\alpha}{\partial \alpha}_{\alpha = 0} = 0\\
+\end{cases}$$
+
+Then conserved value is
+$$Q = \sum_i p_i \frac{\partial \dot{q}^i_\alpha}{\partial \alpha}_{\alpha = 0} = p_x \cdot y  - p_y \cdot x$$
+Which is $z$ component of angular momentum.
+\paragraph{Symmetry in time}
+$$\frac{\partial L}{\partial t} = 0$$
+Since
+$$\frac{d L}{d t} = \sum_i \frac{\partial L}{\partial q^i} \dot{q} +  \frac{\partial L}{\partial \dot{q}^i} \ddot{q} = \sum_i \left[ \frac{d}{dt}  \left( \frac{\partial L}{\partial \dot{q}^i} \right) \dot{q}^i   \frac{\partial L}{\partial \dot{q}^i} \frac{d}{dt}\dot{q} \right] = \sum_i \left[ \frac{d}{dt} \left[ \frac{\partial L}{\partial \dot{q}_i}\dot{q}_i \right] \right] = \frac{d}{dt} \left[ \sum_i p_i \dot{q}_i \right]$$
+Then
+$$\frac{d}{dt} \left( \sum_i p_i \dot{q}^i - L \right) = 0$$
+Denote
+$$h = \sum_i p_i \dot{q}^i - L $$
+It is called Jacobian integral.
+If potential $V$ depends only on $q$, and
+$$T(q, \dot{q}) = \frac{1}{2} \sum_{a,b} m_{ab}(q) \dot{q}^a \dot{q}^b$$
+Then
+$$p_i = \frac{\partial L}{\partial \dot{q}^i} = \frac{\partial T}{\partial \dot{q}^i} = \sum_i m_{ij} \dot{q}^i$$
+$$\sum_i p_i \cdot \dot{q}^i  = \sum_{i,j} m_{ij} \dot{q}^i \dot{q}^j = 2T$$
+$$h = \sum_i p_i \dot{q}^i - L = T + V$$
+\section{Small Oscillations }
+\subsection{1D harmonic oscillator}
+Suppose $x_0$ is stable equilibrium. Write $V$ as a series around $x_0$:
+$$V(x) = \underbrace{V(x_0)}_{0} + \underbrace{\frac{\partial V}{\partial x}_{x_0}\cdot (x-x_0)}_{0} + \frac{1}{2}\underbrace{\frac{\partial^2 V}{\partial x^2}_{x_0}}_{k}\cdot (x-x_0)^2$$
+$$V(x) = \frac{1}{2}k(x-x_0)^2$$
+Then, denoting $\eta = x - x_0$
+$$L = \frac{1}{2}m\dot{\eta}^2 - \frac{1}{2} k \eta^2$$
+From Euler-Lagrange:
+$$m\ddot{\eta} = -k \eta$$
+The solution is
+$$\eta = C_1 \cos \omega t + C_2 \sin \omega t = A \cos (\omega t + \varphi)$$
+In complex numbers
+$$\eta = ae^{i \omega t} = A e^{i(\omega t + \varphi)}$$
+Then 
+$$a = A e^{i\varphi}$$
+And
+$$\ddot{\eta} = -\omega^2  A e^{i(\omega t + \varphi)}$$
